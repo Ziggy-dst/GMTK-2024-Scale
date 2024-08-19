@@ -15,6 +15,7 @@ public class CircleArea : MonoBehaviour
 
     [Header("Expansion")]
     public float expandRate = 1.02f;
+    public float expandAcceleration = 15f;
     public float maximumExpansion;
 
     private void Awake()
@@ -70,6 +71,7 @@ public class CircleArea : MonoBehaviour
     // TODO: check if reach the maximum expansion
     public void Expand()
     {
-        transform.DOScale(transform.localScale * expandRate, .1f);
+        float increment = expandRate * Mathf.Log(transform.localScale.x * expandAcceleration + 1);
+        transform.DOScale(transform.localScale + increment * Vector3.one, .1f);
     }
 }

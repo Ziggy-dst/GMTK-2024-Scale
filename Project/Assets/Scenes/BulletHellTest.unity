@@ -847,10 +847,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetCircle: {fileID: 845038293413442703, guid: a84ceb80f93a6415686c7eedaca475bc, type: 3}
-  innerCircleSpawnScaleRange: {x: 0.5, y: 1}
-  adjacentScaleRatioDifferenceRange: {x: 1.5, y: 2}
-  initialLayerAmountRange: {x: 4, y: 10}
-  innerCircleSpawnScaleThreshold: 1
+  innerCircleSpawnScaleRange: {x: 0.75, y: 1}
+  adjacentScaleRatioDifferenceRange: {x: 2, y: 3}
+  initialLayerAmountRange: {x: 3, y: 5}
+  innerCircleSpawnScaleThreshold: 3
 --- !u!4 &612711100
 Transform:
   m_ObjectHideFlags: 0
