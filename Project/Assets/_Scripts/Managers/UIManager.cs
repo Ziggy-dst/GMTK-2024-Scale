@@ -15,7 +15,7 @@ namespace _Scripts.Managers
             {
                 if (resourceText.name.ToUpper().Equals(resourceType.ToString().ToUpper()))
                 {
-                    resourceText.text = $"{resourceText.name}: {resourceAmount}";
+                    resourceText.text = $"{resourceText.name}: {resourceAmount:F2}";
                     return;
                 }
             }
