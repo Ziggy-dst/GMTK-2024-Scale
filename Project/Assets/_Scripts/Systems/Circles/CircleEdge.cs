@@ -22,5 +22,7 @@ public class CircleEdge : MonoBehaviour
 
         GameManager.Instance.resourceManager.GainResource(_resourceType, GameManager.Instance.playerController.resourcePerBullet);
         // ResourceManager.OnResourceGained?.Invoke(resourceType);
+
+        PlayerParticles.OnBulletHit(other.gameObject.transform.position, _resourceType);
     }
 }
