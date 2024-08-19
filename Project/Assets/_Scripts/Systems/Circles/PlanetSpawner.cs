@@ -42,13 +42,13 @@ public class PlanetSpawner : MonoBehaviour
         switch (resourceType)
         {
             case ResourceType.Green:
-                spriteRenderer.color = Color.green;
+                spriteRenderer.color = new Color(125f / 255f, 14f / 255f, 14f / 255f);
                 break;
             case ResourceType.Purple:
-                spriteRenderer.color = Color.magenta;
+                spriteRenderer.color = new Color(14f / 255f, 125f / 255f, 14f / 255f);
                 break;
             case ResourceType.Yellow:
-                spriteRenderer.color = Color.yellow;
+                spriteRenderer.color = new Color(14f / 255f, 14f / 255f, 125f / 255f);
                 break;
         }
     }
