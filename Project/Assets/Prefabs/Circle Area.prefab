@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 0
-  resourceConsumeRate: 1
-  expandRate: 1.1
+  resourceConsumeRate: 3
+  expandRate: 1.03
   maximumExpansion: 0
 --- !u!1 &1787803117068921015
 GameObject:

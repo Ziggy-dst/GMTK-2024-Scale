@@ -70,7 +70,6 @@ public class PlanetSpawner : MonoBehaviour
             lastLargestSortingLayer = currentInnerCircle.GetComponent<SpriteRenderer>().sortingOrder;
         else lastLargestSortingLayer = 99;
 
-        print("lastLargestSortingLayer: " + lastLargestSortingLayer);
         currentInnerCircle = SpawnCircle();
         // initial scale
         currentInnerCircle.transform.localScale *= Random.Range(innerCircleSpawnScaleRange.x, innerCircleSpawnScaleRange.y);
