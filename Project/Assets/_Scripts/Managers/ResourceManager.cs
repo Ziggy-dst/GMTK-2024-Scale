@@ -73,7 +73,7 @@ public class ResourceManager : MonoBehaviour
                 else YellowResource -= consumeRate * Time.deltaTime;
                 break;
         }
-        PrintResource();
+        // PrintResource();
     }
 
     void PrintResource()
