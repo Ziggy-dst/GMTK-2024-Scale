@@ -9,11 +9,15 @@ namespace _Scripts.Managers
         [Header("Resource")]
         public List<TextMeshProUGUI> playerResource;
 
-        public void UpdateResource(int resource)
+        public void UpdateResource(ResourceType resourceType, float resourceAmount)
         {
             foreach (var resourceText in playerResource)
             {
-                resourceText.text = $"${resource}";
+                if (resourceText.name.ToUpper().Equals(resourceType.ToString().ToUpper()))
+                {
+                    resourceText.text = $"{resourceText.name}: {resourceAmount}";
+                    return;
+                }
             }
         }
     }
