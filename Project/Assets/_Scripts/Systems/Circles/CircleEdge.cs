@@ -18,7 +18,7 @@ public class CircleEdge : MonoBehaviour
     {
         if (!other.CompareTag("Bullet")) return;
         Destroy(other.gameObject);
-        _circleArea.Expand();
+        _circleArea.ExpandAll();
 
         GameManager.Instance.resourceManager.GainResource(_resourceType, GameManager.Instance.playerController.resourcePerBullet);
         // ResourceManager.OnResourceGained?.Invoke(resourceType);

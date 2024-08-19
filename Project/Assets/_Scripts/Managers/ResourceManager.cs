@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
     // public static Action<ResourceType> OnResourceGained;
+    public float maxResourceAmount = 10f;
 
     private float _purpleResource;
     public float PurpleResource
@@ -12,7 +13,7 @@ public class ResourceManager : MonoBehaviour
         get => _purpleResource;
         set
         {
-            _purpleResource = value;
+            _purpleResource = Mathf.Clamp(value, 0f, maxResourceAmount - 1);
             GameManager.Instance.UIManager.UpdateResource(ResourceType.Purple, value);
         }
     }
@@ -23,7 +24,7 @@ public class ResourceManager : MonoBehaviour
         get => _yellowResource;
         set
         {
-            _yellowResource = value;
+            _yellowResource = Mathf.Clamp(value, 0f, maxResourceAmount - 1);
             GameManager.Instance.UIManager.UpdateResource(ResourceType.Yellow, value);
         }
     }
@@ -34,7 +35,7 @@ public class ResourceManager : MonoBehaviour
         get => _greenResource;
         set
         {
-            _greenResource = value;
+            _greenResource = Mathf.Clamp(value, 0f, maxResourceAmount - 1);
             GameManager.Instance.UIManager.UpdateResource(ResourceType.Green, value);
         }
     }

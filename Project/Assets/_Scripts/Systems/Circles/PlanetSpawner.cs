@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlanetSpawner : MonoBehaviour
 {
-    // TODO: different circle with different spawn probability
     public class CircleSpawnProbability
     {
         public ResourceType ResourceType;
@@ -34,6 +33,7 @@ public class PlanetSpawner : MonoBehaviour
 
     void Update()
     {
+        // TODO: BUG: repeat color, should be called when inner circle is expanded
         if (_currentInnerCircle.transform.localScale.x >= innerCircleSpawnScaleThreshold) SpawnInnerCircle();
     }
 

@@ -68,10 +68,26 @@ public class CircleArea : MonoBehaviour
         }
     }
 
-    // TODO: check if reach the maximum expansion
-    public void Expand()
+    public void ExpandAll()
     {
-        float increment = expandRate * Mathf.Log(transform.localScale.x * expandAcceleration + 1);
-        transform.DOScale(transform.localScale + increment * Vector3.one, .1f);
+        ExpandOuterCircle();
+        Expand(transform);
+    }
+
+    // TODO: check if reach the maximum expansion
+    private void ExpandOuterCircle()
+    {
+        Collider2D[] overlappingColliders = Physics2D.OverlapPointAll(GameManager.Instance.playerController.transform.position, LayerMask.GetMask("Circle Area"));
+
+        foreach (var col in overlappingColliders)
+        {
+            Expand(col.transform);
+        }
+    }
+
+    private void Expand(Transform target)
+    {
+        float increment = expandRate * Mathf.Log(target.localScale.x * expandAcceleration + 1);
+        target.transform.DOScale(target.transform.localScale + increment * Vector3.one, .1f);
     }
 }
