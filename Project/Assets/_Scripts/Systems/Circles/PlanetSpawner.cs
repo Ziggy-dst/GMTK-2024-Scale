@@ -23,7 +23,8 @@ public class PlanetSpawner : MonoBehaviour
     // the current inner circle scale that would trigger new circle spawns (must bigger than min innerCircleSpawnScale)
     public float innerCircleSpawnScaleThreshold;
 
-    private GameObject currentInnerCircle;
+    private GameObject _currentInnerCircle;
+    private ResourceType _lastResourceType;
 
 
     void Start()
@@ -33,7 +34,7 @@ public class PlanetSpawner : MonoBehaviour
 
     void Update()
     {
-        if (currentInnerCircle.transform.localScale.x >= innerCircleSpawnScaleThreshold) SpawnInnerCircle();
+        if (_currentInnerCircle.transform.localScale.x >= innerCircleSpawnScaleThreshold) SpawnInnerCircle();
     }
 
     private void GenerateCircleColor(SpriteRenderer spriteRenderer, ResourceType resourceType)
@@ -55,8 +56,11 @@ public class PlanetSpawner : MonoBehaviour
     private GameObject SpawnCircle()
     {
         var spawnedCircle = Instantiate(planetCircle, transform);
+
         // set resource type
-        var resourceType = spawnedCircle.GetComponent<CircleArea>().resourceType = Utils.GetRandomEnumValue<ResourceType>();
+        var resourceType = spawnedCircle.GetComponent<CircleArea>().resourceType = Utils.GetRandomEnumValue(_lastResourceType);
+        _lastResourceType = resourceType;
+
         GenerateCircleColor(spawnedCircle.GetComponent<SpriteRenderer>(), resourceType);
 
         return spawnedCircle;
@@ -66,14 +70,14 @@ public class PlanetSpawner : MonoBehaviour
     {
         // set sorting layer
         int lastLargestSortingLayer;
-        if (currentInnerCircle != null)
-            lastLargestSortingLayer = currentInnerCircle.GetComponent<SpriteRenderer>().sortingOrder;
+        if (_currentInnerCircle != null)
+            lastLargestSortingLayer = _currentInnerCircle.GetComponent<SpriteRenderer>().sortingOrder;
         else lastLargestSortingLayer = 99;
 
-        currentInnerCircle = SpawnCircle();
+        _currentInnerCircle = SpawnCircle();
         // initial scale
-        currentInnerCircle.transform.localScale *= Random.Range(innerCircleSpawnScaleRange.x, innerCircleSpawnScaleRange.y);
-        currentInnerCircle.GetComponent<SpriteRenderer>().sortingOrder = lastLargestSortingLayer + 1;
+        _currentInnerCircle.transform.localScale *= Random.Range(innerCircleSpawnScaleRange.x, innerCircleSpawnScaleRange.y);
+        _currentInnerCircle.GetComponent<SpriteRenderer>().sortingOrder = lastLargestSortingLayer + 1;
     }
 
     private void SpawnInitialPlanet()
@@ -87,8 +91,8 @@ public class PlanetSpawner : MonoBehaviour
 
         if (initialLayerAmount == 1) return;
 
-        Vector3 lastCircleScale = currentInnerCircle.transform.localScale;
-        int lastSortingLayer = currentInnerCircle.GetComponent<SpriteRenderer>().sortingOrder;
+        Vector3 lastCircleScale = _currentInnerCircle.transform.localScale;
+        int lastSortingLayer = _currentInnerCircle.GetComponent<SpriteRenderer>().sortingOrder;
         // spawn outer circles with different scale
         for (int i = 0; i < initialLayerAmount - 1; i++)
         {
