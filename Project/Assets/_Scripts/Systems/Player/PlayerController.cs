@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     public float moveSpeed = 5f;          // 正常移动速度
+    private Vector2 moveDirection;        // 移动方向
+
+    [Header("Dash")]
     public float dashSpeed = 15f;         // 冲刺速度
     public float dashDuration = 0.2f;     // 冲刺持续时间
     public float dashCooldown = 1f;       // 冲刺冷却时间
-
-    public GameObject bulletPrefab;       // 子弹预制体
-    public float bulletSpeed = 10f;       // 子弹速度
-    public Transform firePoint;           // 子弹发射位置
-
-    private Vector2 moveDirection;        // 移动方向
     private bool isDashing = false;       // 是否正在冲刺
     private float dashTime;               // 当前冲刺时间
     private float dashCooldownTime;       // 冲刺冷却时间计时
+
+    [Header("Shoot")]
+    public GameObject bulletPrefab;       // 子弹预制体
+    public float bulletSpeed = 10f;       // 子弹速度
+    public Transform firePoint;           // 子弹发射位置
+    public int resourcePerBullet = 1;
 
     void Update()
     {
