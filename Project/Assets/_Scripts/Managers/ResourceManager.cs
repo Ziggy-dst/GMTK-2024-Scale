@@ -7,25 +7,25 @@ public class ResourceManager : MonoBehaviour
     // public static Action<ResourceType> OnResourceGained;
     public float maxResourceAmount = 10f;
 
-    private float _purpleResource;
-    public float PurpleResource
+    private float _redResource;
+    public float RedResource
     {
-        get => _purpleResource;
+        get => _redResource;
         set
         {
-            _purpleResource = Mathf.Clamp(value, 0f, maxResourceAmount - 1);
-            GameManager.Instance.UIManager.UpdateResource(ResourceType.Purple, value);
+            _redResource = Mathf.Clamp(value, 0f, maxResourceAmount - 1);
+            GameManager.Instance.UIManager.UpdateResource(ResourceType.Red, value);
         }
     }
 
-    private float _yellowResource;
-    public float YellowResource
+    private float _blueResource;
+    public float BlueResource
     {
-        get => _yellowResource;
+        get => _blueResource;
         set
         {
-            _yellowResource = Mathf.Clamp(value, 0f, maxResourceAmount - 1);
-            GameManager.Instance.UIManager.UpdateResource(ResourceType.Yellow, value);
+            _blueResource = Mathf.Clamp(value, 0f, maxResourceAmount - 1);
+            GameManager.Instance.UIManager.UpdateResource(ResourceType.Blue, value);
         }
     }
 
@@ -47,11 +47,11 @@ public class ResourceManager : MonoBehaviour
             case ResourceType.Green:
                 GreenResource += amount;
                 break;
-            case ResourceType.Purple:
-                PurpleResource += amount;
+            case ResourceType.Red:
+                RedResource += amount;
                 break;
-            case ResourceType.Yellow:
-                YellowResource += amount;
+            case ResourceType.Blue:
+                BlueResource += amount;
                 break;
         }
         // PrintResource();
@@ -65,13 +65,13 @@ public class ResourceManager : MonoBehaviour
                 if (GreenResource <= 0) GreenResource = 0;
                 else GreenResource -= consumeRate * Time.deltaTime;
                 break;
-            case ResourceType.Purple:
-                if (PurpleResource <= 0) PurpleResource = 0;
-                else PurpleResource -= consumeRate * Time.deltaTime;
+            case ResourceType.Red:
+                if (RedResource <= 0) RedResource = 0;
+                else RedResource -= consumeRate * Time.deltaTime;
                 break;
-            case ResourceType.Yellow:
-                if (YellowResource <= 0) YellowResource = 0;
-                else YellowResource -= consumeRate * Time.deltaTime;
+            case ResourceType.Blue:
+                if (BlueResource <= 0) BlueResource = 0;
+                else BlueResource -= consumeRate * Time.deltaTime;
                 break;
         }
         // PrintResource();
@@ -80,8 +80,8 @@ public class ResourceManager : MonoBehaviour
     void PrintResource()
     {
         print("GreenResource: " + GreenResource);
-        print("PurpleResource: " + PurpleResource);
-        print("YellowResource: " + YellowResource);
+        print("PurpleResource: " + RedResource);
+        print("YellowResource: " + BlueResource);
         print("-----------------------");
     }
 

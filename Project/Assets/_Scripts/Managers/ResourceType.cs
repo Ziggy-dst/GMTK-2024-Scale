@@ -2,8 +2,8 @@ namespace _Scripts.Managers
 {
     public enum ResourceType
     {
-        Purple,
+        Red,
         Green,
-        Yellow
+        Blue
     }
 }
