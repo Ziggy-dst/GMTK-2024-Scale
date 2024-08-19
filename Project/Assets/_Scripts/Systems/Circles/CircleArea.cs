@@ -7,6 +7,7 @@ using UnityEngine;
 public class CircleArea : MonoBehaviour
 {
     private Collider2D _circleAreaCollider;
+    private Collider2D _circleEdgeCollider;
 
     [Header("Resource")]
     public ResourceType resourceType;
@@ -16,14 +17,26 @@ public class CircleArea : MonoBehaviour
     public float expandRate = 1.02f;
     public float maximumExpansion;
 
-    private void Start()
+    private void Awake()
     {
         _circleAreaCollider = GetComponent<Collider2D>();
+        _circleEdgeCollider = GetComponentInChildren<EdgeCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // if (other.CompareTag("Player")) circleAreaCollider.enabled = false;
+        if (other.CompareTag("Player"))
+        {
+            _circleEdgeCollider.enabled = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _circleEdgeCollider.enabled = true;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -44,7 +57,7 @@ public class CircleArea : MonoBehaviour
         if (topCollider == _circleAreaCollider)
         {
             // 当前对象是最上层的，执行相应的逻辑
-            Debug.Log("Top collider triggered: " + gameObject.name);
+            // Debug.Log("Top collider triggered: " + gameObject.name);
 
             // 在这里处理碰撞逻辑
             if (other.CompareTag("Player"))
@@ -52,11 +65,6 @@ public class CircleArea : MonoBehaviour
                 GameManager.Instance.resourceManager.ConsumeResource(resourceType, resourceConsumeRate);
             }
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        // if (other.CompareTag("Player")) circleAreaCollider.enabled = true;
     }
 
     // TODO: check if reach the maximum expansion
