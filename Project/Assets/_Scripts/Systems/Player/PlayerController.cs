@@ -25,13 +25,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 获取移动输入
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        moveDirection = new Vector2(horizontal, vertical).normalized;
+        if ((GameManager.Instance.currentGameState == GameState.Menu | GameManager.Instance.currentGameState == GameState.InGame))
+        {
+            // 获取移动输入
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            moveDirection = new Vector2(horizontal, vertical).normalized;
+        }
 
         // 检查是否可以冲刺
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && Time.time >= dashCooldownTime)
+        if (Input.GetKeyDown(KeyCode.Space)&& (GameManager.Instance.currentGameState == GameState.Menu | GameManager.Instance.currentGameState == GameState.InGame) && !isDashing && Time.time >= dashCooldownTime)
         {
             StartDash();
         }

@@ -40,6 +40,16 @@ public class CircleArea : MonoBehaviour
         {
             _circleEdgeCollider.enabled = true;
             GameManager.Instance.enemy?.ChangeGrowthSpeed();
+
+            if (GameManager.Instance.currentGameState == GameState.InGame)
+            {
+                Collider2D[] overlappingColliders = Physics2D.OverlapPointAll(other.transform.position, LayerMask.GetMask("Circle Area"));
+                print("over" + overlappingColliders.Length);
+                if (overlappingColliders.Length == 0)
+                {
+                    GameManager.Instance.ChangeGameState(GameState.Lose);
+                }
+            }
         }
     }
 
