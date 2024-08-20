@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour
         // 如果碰撞到玩家，游戏结束
         if (other.transform == chaseTarget)
         {
+            GameManager.Instance.audioManager.PlaySfx("PlayerHit");
             Destroy(other.gameObject);
             GameManager.Instance.ChangeGameState(GameState.Lose);
         }

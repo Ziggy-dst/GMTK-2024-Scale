@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Managers;
 using UnityEngine;
 
 namespace _Scripts.Systems.Player
@@ -9,6 +10,7 @@ namespace _Scripts.Systems.Player
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
+                GameManager.Instance.audioManager.PlaySfx("EnemyHit");
                 HitEnemyParticle.OnBulletHitEnemy?.Invoke(transform.position);
                 other.gameObject.GetComponent<Enemy>().Shrink();
                 Destroy(gameObject);

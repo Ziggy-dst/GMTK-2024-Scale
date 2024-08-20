@@ -24,6 +24,7 @@ namespace _Scripts.Managers
         [HideInInspector] public Enemy enemy;
         [HideInInspector] public ResourceManager resourceManager;
         [HideInInspector] public UIManager UIManager;
+        [HideInInspector] public AudioManager audioManager;
 
         private void Awake()
         {
@@ -39,6 +40,7 @@ namespace _Scripts.Managers
 
             UIManager = GetComponentInChildren<UIManager>();
             resourceManager = GetComponentInChildren<ResourceManager>();
+            audioManager = GetComponentInChildren<AudioManager>();
             playerController = FindObjectOfType<PlayerController>();
             enemy = FindObjectOfType<Enemy>();
         }
@@ -82,14 +84,18 @@ namespace _Scripts.Managers
                     onGameStateChanged?.Invoke(GameState.Menu);
                     break;
                 case GameState.InGame:
+                    audioManager.PlayMusic("InGameBGM");
                     currentGameState = GameState.InGame;
                     onGameStateChanged?.Invoke(GameState.InGame);
                     break;
                 case GameState.Win:
+                    audioManager.StopMusic();
                     currentGameState = GameState.Win;
                     onGameStateChanged?.Invoke(GameState.Win);
                     break;
                 case GameState.Lose:
+                    audioManager.StopMusic();
+                    audioManager.PlayMusic("GameOver");
                     currentGameState = GameState.Lose;
                     onGameStateChanged?.Invoke(GameState.Lose);
                     break;

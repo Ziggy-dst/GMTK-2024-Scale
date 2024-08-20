@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f366d2ef4204407bf7afd8bc687ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxResourceAmount: 5
+  maxResourceAmount: 20
 --- !u!1001 &311346826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1726,8 +1726,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1646943272}
   sfxSource: {fileID: 727055977}
-  musicClips: []
-  sfxClips: []
+  musicClips:
+  - name: InGameBGM
+    clip: {fileID: 8300000, guid: 75e40274cd0ab49f69eb50b45018f94a, type: 3}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 542f241fc0b4b486eb3722ae73267c35, type: 3}
+  sfxClips:
+  - name: Fire
+    clip: {fileID: 8300000, guid: ecb81c1cc61694738a32cfb4a5342f6d, type: 3}
+  - name: RGBHit
+    clip: {fileID: 8300000, guid: 1c95125e68aad4caaa06e9958172c0a5, type: 3}
+  - name: EnemyHit
+    clip: {fileID: 8300000, guid: 58f27ec9a08c046fc876bd294041062d, type: 3}
+  - name: PlayerHit
+    clip: {fileID: 8300000, guid: cfb5a7d90724e400aa5b5b724f24a00e, type: 3}
 --- !u!1 &832972765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,6 +1774,7 @@ MonoBehaviour:
   enemy: {fileID: 0}
   resourceManager: {fileID: 0}
   UIManager: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!4 &832972767
 Transform:
   m_ObjectHideFlags: 0
@@ -3435,7 +3448,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

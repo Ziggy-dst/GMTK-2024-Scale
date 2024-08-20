@@ -17,6 +17,8 @@ public class CircleEdge : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Bullet")) return;
+
+        GameManager.Instance.audioManager.PlaySfx("RGBHit");
         Destroy(other.gameObject);
         _circleArea.ExpandAll();
 
