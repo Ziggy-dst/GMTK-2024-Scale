@@ -639,7 +639,7 @@ MonoBehaviour:
   innerCircleSpawnScaleRange: {x: 0, y: 0}
   adjacentScaleRatioDifferenceRange: {x: 0, y: 0}
   initialLayerAmountRange: {x: 0, y: 0}
-  innerCircleSpawnScaleThreshold: 0
+  innerCircleSpawnScaleThresholdRange: {x: 0, y: 0}
 --- !u!4 &361033071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2760766409561230889, guid: a84ceb80f93a6415686c7eedaca475bc, type: 3}
@@ -927,7 +927,7 @@ MonoBehaviour:
   innerCircleSpawnScaleRange: {x: 0.75, y: 1}
   adjacentScaleRatioDifferenceRange: {x: 2, y: 3}
   initialLayerAmountRange: {x: 3, y: 5}
-  innerCircleSpawnScaleThreshold: 3
+  innerCircleSpawnScaleThresholdRange: {x: 3, y: 5}
 --- !u!4 &612711100
 Transform:
   m_ObjectHideFlags: 0
@@ -937,7 +937,7 @@ Transform:
   m_GameObject: {fileID: 612711098}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.23562217, y: 1.5407171, z: 0.03245926}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1370,9 +1370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  dashSpeed: 20
+  dashSpeed: 1
   dashDuration: 0.2
-  dashCooldown: 1
+  dashCooldown: 0
   bulletPrefab: {fileID: 7014584967581704183, guid: 80a84147dc8e44c2ba218cf8482f3d1a, type: 3}
   bulletSpeed: 10
   firePoint: {fileID: 126086009}
@@ -1510,7 +1510,7 @@ Transform:
   m_GameObject: {fileID: 1372107816}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.67, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.273746, y: 0.43752027, z: 0.49}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1949,7 +1949,7 @@ Transform:
   m_GameObject: {fileID: 1694324236}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2943778, y: 0.7992827, z: -0.03245926}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2236,7 +2236,7 @@ Transform:
   m_GameObject: {fileID: 1770241095}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.3756223, y: -0.29928273, z: -9.967541}
+  m_LocalPosition: {x: 2.2943778, y: -0.7992827, z: -9.967541}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

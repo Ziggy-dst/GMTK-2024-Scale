@@ -20,7 +20,7 @@ public class PlanetSpawner : MonoBehaviour
 
     [Header("Inner Circle Spawn Settings")]
     // the current inner circle scale that would trigger new circle spawns (must bigger than min innerCircleSpawnScale)
-    public float innerCircleSpawnScaleThreshold;
+    public Vector2 innerCircleSpawnScaleThresholdRange;
 
     private GameObject _currentInnerCircle;
     private ResourceType _lastResourceType;
@@ -34,7 +34,7 @@ public class PlanetSpawner : MonoBehaviour
     void Update()
     {
         // TODO: BUG: repeat color, should be called when inner circle is expanded
-        if (_currentInnerCircle.transform.localScale.x >= innerCircleSpawnScaleThreshold) SpawnInnerCircle();
+        if (_currentInnerCircle.transform.localScale.x >= Random.Range(innerCircleSpawnScaleThresholdRange.x, innerCircleSpawnScaleThresholdRange.y)) SpawnInnerCircle();
     }
 
     private void GenerateCircleColor(SpriteRenderer spriteRenderer, ResourceType resourceType)
