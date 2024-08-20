@@ -44,6 +44,9 @@ namespace _Scripts.Managers
                 case GameState.Menu:
                     ShowMenu();
                     break;
+                case GameState.InGame:
+                    HideMenu();
+                    break;
                 case GameState.Win:
                     ShowWinPage();
                     break;
@@ -51,6 +54,12 @@ namespace _Scripts.Managers
                     ShowLosePage();
                     break;
             }
+        }
+
+        private void HideMenu()
+        {
+            menu?.SetActive(false);
+            print("Hide menu");
         }
 
         private void ShowWinPage()
