@@ -8,6 +8,8 @@ public class CircleEdge : MonoBehaviour
     private ResourceType _resourceType;
     private CircleArea _circleArea;
 
+    public static Action onCircleExpand;
+
     private void Start()
     {
         _circleArea = transform.parent.GetComponent<CircleArea>();
@@ -20,7 +22,10 @@ public class CircleEdge : MonoBehaviour
 
         GameManager.Instance.audioManager.PlaySfx("RGBHit");
         Destroy(other.gameObject);
+
         _circleArea.ExpandAll();
+
+        onCircleExpand?.Invoke();
 
         print("edge: " + GameManager.Instance.playerController);
         GameManager.Instance.resourceManager.GainResource(_resourceType, GameManager.Instance.playerController.resourcePerBullet);

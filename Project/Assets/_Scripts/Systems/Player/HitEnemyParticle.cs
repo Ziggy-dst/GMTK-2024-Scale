@@ -28,7 +28,7 @@ namespace _Scripts.Systems.Player
 
             // 计算法线角度，使用 Atan2 得到的角度是与 x 轴的夹角
             float normalAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            
+
             // 将粒子系统的旋转设置为与切面垂直
             transform.rotation = Quaternion.AngleAxis(normalAngle, Vector3.forward);
 

@@ -1,6 +1,8 @@
+using System;
 using _Scripts.Managers;
 using _Scripts.Utilities;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlanetSpawner : MonoBehaviour
 {
@@ -31,10 +33,14 @@ public class PlanetSpawner : MonoBehaviour
         SpawnInitialPlanet();
     }
 
-    void Update()
+    private void OnEnable()
     {
-        // TODO: BUG: repeat color, should be called when inner circle is expanded
-        if (_currentInnerCircle.transform.localScale.x >= Random.Range(innerCircleSpawnScaleThresholdRange.x, innerCircleSpawnScaleThresholdRange.y)) SpawnInnerCircle();
+        CircleEdge.onCircleExpand += TrySpawnNewInnerCircle;
+    }
+
+    private void OnDisable()
+    {
+        CircleEdge.onCircleExpand -= TrySpawnNewInnerCircle;
     }
 
     private void GenerateCircleColor(SpriteRenderer spriteRenderer, ResourceType resourceType)
@@ -51,6 +57,12 @@ public class PlanetSpawner : MonoBehaviour
                 spriteRenderer.color = new Color(14f / 255f, 14f / 255f, 125f / 255f);
                 break;
         }
+    }
+
+    private void TrySpawnNewInnerCircle()
+    {
+        // TODO: BUG: repeat color, should be called when inner circle is expanded
+        if (_currentInnerCircle.transform.localScale.x >= Random.Range(innerCircleSpawnScaleThresholdRange.x, innerCircleSpawnScaleThresholdRange.y)) SpawnInnerCircle();
     }
 
     private GameObject SpawnCircle()
