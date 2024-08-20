@@ -24,21 +24,13 @@ namespace _Scripts.Systems.Player
         {
             transform.position = position;
             // 计算从圆心到切点的向量
-            Vector2 direction = GameManager.Instance.enemy.transform.position - position;
+            Vector2 direction = position - GameManager.Instance.enemy.transform.position;
 
             // 计算法线角度，使用 Atan2 得到的角度是与 x 轴的夹角
             float normalAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            // 为了与切面垂直，我们需要将法线方向旋转90度
-            float tangentAngle = normalAngle + 90f; // 顺时针旋转90度
-
-            // 或者使用 -90f 来逆时针旋转90度，如果需要逆时针方向
-            // float tangentAngle = normalAngle - 90f;
-
+            
             // 将粒子系统的旋转设置为与切面垂直
-            transform.rotation = Quaternion.AngleAxis(tangentAngle, Vector3.back);
-            transform.rotation = Quaternion.AngleAxis(90, Vector3.down);
-            transform.rotation = Quaternion.AngleAxis(-90, Vector3.right);
+            transform.rotation = Quaternion.AngleAxis(normalAngle, Vector3.forward);
 
             _particleSystem?.Play();
         }
