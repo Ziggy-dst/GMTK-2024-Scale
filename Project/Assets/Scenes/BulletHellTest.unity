@@ -2467,6 +2467,11 @@ MonoBehaviour:
   moveSpeed: 2
   positionUpdateInterval: 2
   stopDistance: 0
+  shootDelay: 2
+  bulletPrefab: {fileID: 7014584967581704183, guid: 07d58d94e0d0b41d4addfa2c556de534, type: 3}
+  firePoint: {fileID: 2000028416}
+  bulletCount: 20
+  bulletSpeed: 5
 --- !u!212 &2000028415
 SpriteRenderer:
   m_ObjectHideFlags: 0

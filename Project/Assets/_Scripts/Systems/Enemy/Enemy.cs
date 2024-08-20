@@ -14,8 +14,17 @@ public class Enemy : MonoBehaviour
     public Transform chaseTarget;
     public float moveSpeed;
 
+    [Header("Shoot Settings")]
     public float positionUpdateInterval = 2f; // 追逐玩家时，更新位置的间隔时间
     public float stopDistance = 5f; // 敌人停止的距离
+
+    public float shootDelay = 2f; // 停止后发射弹幕的延迟时间
+    public GameObject bulletPrefab; // 子弹的预制件
+    public Transform firePoint; // 子弹发射的位置
+    public int bulletCount = 20; // 弹幕的子弹数量
+    public float bulletSpeed = 5f; // 子弹的速度
+
+    private float shootCooldown = 0f; // 发射的冷却时间
 
     private Vector3 lastKnownPlayerPosition; // 记录最后一次定位到的玩家位置
     private float positionUpdateTimer = 0f; // 位置更新计时器
@@ -37,6 +46,13 @@ public class Enemy : MonoBehaviour
         AutoGrow();
 
         Chase();
+
+        shootCooldown -= Time.deltaTime;
+        if (shootCooldown <= 0f)
+        {
+            ShootBullet();
+            shootCooldown = shootDelay;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -68,6 +84,27 @@ public class Enemy : MonoBehaviour
             // 追逐玩家
             Vector2 direction = (lastKnownPlayerPosition - transform.position).normalized;
             transform.position = Vector2.MoveTowards(transform.position, lastKnownPlayerPosition, moveSpeed * Time.deltaTime);
+        }
+    }
+
+    void ShootBullet()
+    {
+        // 发射弹幕
+        float angleStep = 360f / bulletCount;
+        float angle = 0f;
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float bulletDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
+            float bulletDirY = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180f);
+
+            Vector3 bulletVector = new Vector3(bulletDirX, bulletDirY, 0f);
+            Vector2 bulletDirection = (bulletVector - transform.position).normalized;
+
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = bulletDirection * bulletSpeed;
+
+            angle += angleStep;
         }
     }
 
