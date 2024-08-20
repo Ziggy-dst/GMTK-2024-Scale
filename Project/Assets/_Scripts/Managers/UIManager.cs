@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Scripts.Managers
 {
     public class UIManager : MonoBehaviour
     {
         [Header("Resource")]
-        public List<TextMeshProUGUI> playerResource;
+        public List<Image> playerResource;
 
         [Header("Pages")]
         public GameObject menu;
@@ -21,7 +22,8 @@ namespace _Scripts.Managers
             {
                 if (resourceText.name.ToUpper().Equals(resourceType.ToString().ToUpper()))
                 {
-                    resourceText.text = $"{resourceText.name}: {resourceAmount:F2}";
+                    resourceText.fillAmount = resourceAmount / 20;
+                    // resourceText.text = $"{resourceText.name}: {resourceAmount:F2}";
                     return;
                 }
             }

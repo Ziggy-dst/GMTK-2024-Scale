@@ -44,7 +44,6 @@ public class CircleArea : MonoBehaviour
             if (GameManager.Instance.currentGameState == GameState.InGame)
             {
                 Collider2D[] overlappingColliders = Physics2D.OverlapPointAll(other.transform.position, LayerMask.GetMask("Circle Area"));
-                print("over" + overlappingColliders.Length);
                 if (overlappingColliders.Length == 0)
                 {
                     GameManager.Instance.ChangeGameState(GameState.Lose);
