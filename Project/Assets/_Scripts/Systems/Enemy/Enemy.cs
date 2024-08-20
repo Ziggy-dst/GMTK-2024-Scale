@@ -49,12 +49,12 @@ public class Enemy : MonoBehaviour
 
         Chase();
 
-        shootCooldown -= Time.deltaTime;
-        if (shootCooldown <= 0f)
-        {
-            ShootBullet();
-            shootCooldown = shootDelay;
-        }
+        // shootCooldown -= Time.deltaTime;
+        // if (shootCooldown <= 0f)
+        // {
+        //     ShootBullet();
+        //     shootCooldown = shootDelay;
+        // }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

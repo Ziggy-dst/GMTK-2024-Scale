@@ -9,6 +9,7 @@ namespace _Scripts.Systems.Player
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
+                HitEnemyParticle.OnBulletHitEnemy?.Invoke(transform.position);
                 other.gameObject.GetComponent<Enemy>().Shrink();
                 Destroy(gameObject);
             }

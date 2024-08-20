@@ -174,3 +174,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2938b7bd7c40e6b2d675d4b6e0e3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletParticle: {fileID: 4736932126936062196, guid: 531d1342601124711b0fe0e911fdb034, type: 3}
