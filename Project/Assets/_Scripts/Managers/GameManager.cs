@@ -95,7 +95,7 @@ namespace _Scripts.Managers
                     break;
                 case GameState.Lose:
                     audioManager.StopMusic();
-                    audioManager.PlayMusic("GameOver");
+                    audioManager.PlaySfx("GameOver");
                     currentGameState = GameState.Lose;
                     onGameStateChanged?.Invoke(GameState.Lose);
                     break;
