@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 0
-  resourceConsumeRate: 1.5
+  resourceConsumeRate: 3
   expandRate: 0.3
   expandAcceleration: 100
   maximumExpansion: 0
