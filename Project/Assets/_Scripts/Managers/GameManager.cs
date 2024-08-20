@@ -45,7 +45,8 @@ namespace _Scripts.Managers
 
         private void Start()
         {
-            ChangeGameState(GameState.Menu);
+            currentGameState = GameState.Menu;
+            onGameStateChanged?.Invoke(GameState.Menu);
         }
 
         void Update()
@@ -57,7 +58,18 @@ namespace _Scripts.Managers
                     ChangeGameState(GameState.Menu);
                 }
             }
-            RestartGame();
+
+            if (Input.GetKeyDown(KeyCode.R)) RestartGame();
+        }
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         public  void ChangeGameState(GameState newState)
@@ -84,22 +96,18 @@ namespace _Scripts.Managers
             }
         }
 
-        public void StartGame()
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            Debug.Log("Scene Loaded: " + scene.name);
+            Debug.Log("Load Mode: " + mode);
 
-        }
-
-        private void EndGame()
-        {
-
+            playerController = FindObjectOfType<PlayerController>();
+            enemy = FindObjectOfType<Enemy>();
         }
 
         private void RestartGame()
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

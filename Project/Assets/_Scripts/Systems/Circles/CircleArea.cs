@@ -39,7 +39,7 @@ public class CircleArea : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _circleEdgeCollider.enabled = true;
-            GameManager.Instance.enemy.ChangeGrowthSpeed();
+            GameManager.Instance.enemy?.ChangeGrowthSpeed();
         }
     }
 

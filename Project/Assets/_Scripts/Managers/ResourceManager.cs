@@ -65,11 +65,11 @@ public class ResourceManager : MonoBehaviour
                 if (GreenResource <= 0)
                 {
                     GreenResource = 0;
-                    GameManager.Instance.enemy.ChangeGrowthSpeed(true);
+                    GameManager.Instance.enemy?.ChangeGrowthSpeed(true);
                 }
                 else
                 {
-                    GameManager.Instance.enemy.ChangeGrowthSpeed();
+                    GameManager.Instance.enemy?.ChangeGrowthSpeed();
                     GreenResource -= consumeRate * Time.deltaTime;
                 }
                 break;
@@ -77,11 +77,11 @@ public class ResourceManager : MonoBehaviour
                 if (RedResource <= 0)
                 {
                     RedResource = 0;
-                    GameManager.Instance.enemy.ChangeGrowthSpeed(true);
+                    GameManager.Instance.enemy?.ChangeGrowthSpeed(true);
                 }
                 else
                 {
-                    GameManager.Instance.enemy.ChangeGrowthSpeed();
+                    GameManager.Instance.enemy?.ChangeGrowthSpeed();
                     RedResource -= consumeRate * Time.deltaTime;
                 }
                 break;
@@ -89,11 +89,11 @@ public class ResourceManager : MonoBehaviour
                 if (BlueResource <= 0)
                 {
                     BlueResource = 0;
-                    GameManager.Instance.enemy.ChangeGrowthSpeed(true);
+                    GameManager.Instance.enemy?.ChangeGrowthSpeed(true);
                 }
                 else
                 {
-                    GameManager.Instance.enemy.ChangeGrowthSpeed();
+                    GameManager.Instance.enemy?.ChangeGrowthSpeed();
                     BlueResource -= consumeRate * Time.deltaTime;
                 }
                 break;

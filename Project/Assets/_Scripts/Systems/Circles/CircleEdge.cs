@@ -20,6 +20,7 @@ public class CircleEdge : MonoBehaviour
         Destroy(other.gameObject);
         _circleArea.ExpandAll();
 
+        print("edge: " + GameManager.Instance.playerController);
         GameManager.Instance.resourceManager.GainResource(_resourceType, GameManager.Instance.playerController.resourcePerBullet);
         // ResourceManager.OnResourceGained?.Invoke(resourceType);
 
