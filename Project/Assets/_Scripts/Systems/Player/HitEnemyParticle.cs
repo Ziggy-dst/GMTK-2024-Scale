@@ -37,6 +37,8 @@ namespace _Scripts.Systems.Player
 
             // 将粒子系统的旋转设置为与切面垂直
             transform.rotation = Quaternion.AngleAxis(tangentAngle, Vector3.back);
+            transform.rotation = Quaternion.AngleAxis(90, Vector3.down);
+            transform.rotation = Quaternion.AngleAxis(-90, Vector3.right);
 
             _particleSystem?.Play();
         }
