@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f366d2ef4204407bf7afd8bc687ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxResourceAmount: 20
+  maxResourceAmount: 15
 --- !u!1001 &311346826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4317,9 +4317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f91d733658b84d47ad6f7b022799935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthFactor: 0.6
+  growthFactor: 0.7
   drainedGrowthFactor: 10
-  shrinkFactor: 0.5
+  shrinkFactor: 0.4
   chaseTarget: {fileID: 168692105}
   moveSpeed: 1
   positionUpdateInterval: 4
