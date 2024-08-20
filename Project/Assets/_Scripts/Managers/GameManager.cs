@@ -9,6 +9,7 @@ namespace _Scripts.Managers
         public static GameManager Instance;
 
         [HideInInspector] public PlayerController playerController;
+        [HideInInspector] public Enemy enemy;
         [HideInInspector] public ResourceManager resourceManager;
         [HideInInspector] public UIManager UIManager;
 
@@ -27,11 +28,17 @@ namespace _Scripts.Managers
             UIManager = GetComponentInChildren<UIManager>();
             resourceManager = GetComponentInChildren<ResourceManager>();
             playerController = FindObjectOfType<PlayerController>();
+            enemy = FindObjectOfType<Enemy>();
         }
 
         void Update()
         {
             RestartGame();
+        }
+
+        private void EndGame()
+        {
+
         }
 
         private void RestartGame()

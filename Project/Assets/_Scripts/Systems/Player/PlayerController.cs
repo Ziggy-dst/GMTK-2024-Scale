@@ -25,18 +25,18 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // 获取移动输入
-        // float horizontal = Input.GetAxisRaw("Horizontal");
+        float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        moveDirection = new Vector2(0, vertical).normalized;
+        moveDirection = new Vector2(horizontal, vertical).normalized;
 
         // 检查是否可以冲刺
-        if (Input.GetMouseButtonDown(1) && !isDashing && Time.time >= dashCooldownTime)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && Time.time >= dashCooldownTime)
         {
             StartDash();
         }
 
         // 检查是否射击
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 角色朝向鼠标指针方向
-        // RotateTowardsMouse();
+        RotateTowardsMouse();
     }
 
     void StartDash()

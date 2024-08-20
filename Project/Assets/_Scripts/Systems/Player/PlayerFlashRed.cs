@@ -18,7 +18,7 @@ public class PlayerFlashRed : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Enemy Bullet"))
         {
             StartCoroutine(FlashRed());
             Destroy(other.gameObject); // 销毁弹幕
@@ -31,4 +31,6 @@ public class PlayerFlashRed : MonoBehaviour
         yield return new WaitForSeconds(flashDuration);
         spriteRenderer.color = originalColor;
     }
+
+    // TODO: player dies
 }

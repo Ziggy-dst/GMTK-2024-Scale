@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
-    // public static Action<ResourceType> OnResourceGained;
+    public static Action OnResourceDraining;
     public float maxResourceAmount = 10f;
 
     private float _redResource;
@@ -62,16 +62,40 @@ public class ResourceManager : MonoBehaviour
         switch (resourceType)
         {
             case ResourceType.Green:
-                if (GreenResource <= 0) GreenResource = 0;
-                else GreenResource -= consumeRate * Time.deltaTime;
+                if (GreenResource <= 0)
+                {
+                    GreenResource = 0;
+                    GameManager.Instance.enemy.ChangeGrowthSpeed(true);
+                }
+                else
+                {
+                    GameManager.Instance.enemy.ChangeGrowthSpeed();
+                    GreenResource -= consumeRate * Time.deltaTime;
+                }
                 break;
             case ResourceType.Red:
-                if (RedResource <= 0) RedResource = 0;
-                else RedResource -= consumeRate * Time.deltaTime;
+                if (RedResource <= 0)
+                {
+                    RedResource = 0;
+                    GameManager.Instance.enemy.ChangeGrowthSpeed(true);
+                }
+                else
+                {
+                    GameManager.Instance.enemy.ChangeGrowthSpeed();
+                    RedResource -= consumeRate * Time.deltaTime;
+                }
                 break;
             case ResourceType.Blue:
-                if (BlueResource <= 0) BlueResource = 0;
-                else BlueResource -= consumeRate * Time.deltaTime;
+                if (BlueResource <= 0)
+                {
+                    BlueResource = 0;
+                    GameManager.Instance.enemy.ChangeGrowthSpeed(true);
+                }
+                else
+                {
+                    GameManager.Instance.enemy.ChangeGrowthSpeed();
+                    BlueResource -= consumeRate * Time.deltaTime;
+                }
                 break;
         }
         // PrintResource();
