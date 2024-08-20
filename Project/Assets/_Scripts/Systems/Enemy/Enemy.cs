@@ -142,6 +142,6 @@ public class Enemy : MonoBehaviour
         float newScale = currentScale - decrement * shrinkFactor;
         transform.localScale = new Vector3(newScale, newScale, newScale);
 
-        if (transform.localScale.x <= 0) Die();
+        if (transform.localScale.x <= 0.3f) Die();
     }
 }
