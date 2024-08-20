@@ -1,4 +1,5 @@
 using System.Collections;
+using _Scripts.Managers;
 using UnityEngine;
 
 
@@ -22,6 +23,9 @@ public class PlayerFlashRed : MonoBehaviour
         {
             StartCoroutine(FlashRed());
             Destroy(other.gameObject); // 销毁弹幕
+            Destroy(gameObject);
+
+            GameManager.Instance.ChangeGameState(GameState.Lose);
         }
     }
 
@@ -32,5 +36,5 @@ public class PlayerFlashRed : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
-    // TODO: player dies
+
 }

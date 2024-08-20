@@ -29,6 +29,8 @@ public class CircleArea : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _circleEdgeCollider.enabled = false;
+
+            if (GameManager.Instance.currentGameState == GameState.Menu) GameManager.Instance.ChangeGameState(GameState.InGame);
         }
     }
 

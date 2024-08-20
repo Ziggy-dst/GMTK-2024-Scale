@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Managers;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -43,6 +44,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.currentGameState != GameState.InGame) return;
         AutoGrow();
 
         Chase();
@@ -55,12 +57,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // 如果碰撞到玩家，游戏结束
         if (other.transform == chaseTarget)
         {
-            Die(); // 假设 Die() 处理了玩家胜利或敌人失败的逻辑
+            Destroy(other.gameObject);
+            GameManager.Instance.ChangeGameState(GameState.Lose);
         }
     }
 
@@ -76,8 +79,6 @@ public class Enemy : MonoBehaviour
 
         // 计算敌人圆的边缘到玩家的距离
         float distanceToPlayer = Vector2.Distance(transform.position, lastKnownPlayerPosition);
-
-        print(distanceToPlayer);
 
         if (distanceToPlayer > stopDistance)
         {
@@ -128,13 +129,15 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
         // 动画和游戏结束逻辑
+
+        GameManager.Instance.ChangeGameState(GameState.Win);
     }
 
     // 缩小
     public void Shrink()
     {
         float currentScale = transform.localScale.x;
-        float decrement = growthFactor / (currentScale + 1);
+        float decrement = (growthFactor * currentScale) / (currentScale + 1);
         float newScale = currentScale - decrement * shrinkFactor;
         transform.localScale = new Vector3(newScale, newScale, newScale);
 

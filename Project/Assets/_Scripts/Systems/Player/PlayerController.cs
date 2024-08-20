@@ -1,3 +1,4 @@
+using _Scripts.Managers;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -30,13 +31,13 @@ public class PlayerController : MonoBehaviour
         moveDirection = new Vector2(horizontal, vertical).normalized;
 
         // 检查是否可以冲刺
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && Time.time >= dashCooldownTime)
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && Time.time >= dashCooldownTime)
         {
             StartDash();
         }
 
         // 检查是否射击
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) & GameManager.Instance.currentGameState == GameState.InGame)
         {
             Shoot();
         }
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     void StartDash()
     {
-        print("Start dash");
+        // print("Start dash");
         isDashing = true;
         dashTime = dashDuration;
         dashCooldownTime = Time.time + dashCooldown;
